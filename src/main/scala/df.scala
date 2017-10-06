@@ -4,7 +4,7 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
 val spark = SparkSession.builder().getOrCreate()
-val df = spark.read.csv("assets/CitiGroup2006_2008")
+val df = spark.read.option("header", "true").csv("assets/CitiGroup2006_2008")
 
 // NOTES: DataFrame is like an Excel spreadsheet, where the columns are the DataSets
 df.head(5)
