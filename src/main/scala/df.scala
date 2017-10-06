@@ -15,9 +15,12 @@ val df = spark.read.option("header", "true").option("inferSchema", "true").csv("
 // * _c0, _c1 -> default way of calling columns in Spark
 // * Spark uses string as a type by default
 
+df.columns
 for (row <- df.head(5)) {
   println(row)
 }
+// NOTES: Stats out of the box!
+df.describe().show()
 
 // NOTES: After adding the inferSchema option the data types are correct
 // df: org.apache.spark.sql.DataFrame = [Date: timestamp, Open: double ... 4 more fields]
