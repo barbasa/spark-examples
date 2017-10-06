@@ -15,3 +15,7 @@ df.head(5)
 // * _c0, _c1 -> default way of calling columns in Spark
 // * Spark uses string as a type by default
 
+for (row <- df.head(5)) {
+  println(row)
+}
+
