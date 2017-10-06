@@ -20,8 +20,21 @@ for (row <- df.head(5)) {
   println(row)
 }
 // NOTES: Stats out of the box!
-df.describe().show()
+//df.describe().show()
 
 // NOTES: After adding the inferSchema option the data types are correct
 // df: org.apache.spark.sql.DataFrame = [Date: timestamp, Open: double ... 4 more fields]
+
+
+// NOTES: Select the columns you are interested in
+df.select($"Volume",$"Date").show(2)
+
+// NOTES: Add a new column. df("High") takes the column object
+val df2 = df.withColumn("HighPlusLow", df("High") + df("Low"))
+
+df2.printSchema()
+
+df2.select(df2("HighPlusLow").as("HPL"), df2("Close")).show(2)
+
+
 
